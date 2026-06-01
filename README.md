@@ -19,10 +19,14 @@ There is a *script written to check host system requirements (**available in the
 > Run the script **host_sys_req_checker.sh**<br>
 > ``` $ chmod +x path/to/host_sys_req_checker.sh ```<br>
 > ``` $ path/to/host_sys_req_checker.sh ```<br>
+![alt text](Visual_Guides/checker_script_output.png)
+
+> Install any packages which *isn't **up-to-date** or **downloaded***.
 
 ### Connect to Linux System:
 1. Boot the installation package|iso.
 ![alt text](Visual_Guides/ARCH_root_terminal.png)
+*after booting, it should look similar*
 2. Find out the ip address of your machine.
 ``` $ ip a ```
 3. SSH into the terminal from your host machine.
