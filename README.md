@@ -38,14 +38,37 @@ eg.
 *SSH part is slightly different for vm users (**rest of steps are same**)*
 
 1. Perform **Port Forwarding**<br>
-    eg. Guest Port -> 3022<br>
-        Host Port -> 22
+    eg. Host Port -> 3022 (*listens all the activity at Guest Port*)<br>
+        Guest Port -> 22 (*std. port for SSH*)
 2. Now can perform *ssh from host to virtual machine.*
-``` $ ssh -p <Guest_Port> hostname@<loop_back_address> ```<br>
+``` $ ssh -p <Host_Port> hostname@<loop_back_address> ```<br>
 eg. 
     $ ssh -p 3022 root@127.0.0.1
 
 
 ## Partition
+
+### Designing Disk Partitions
+
+**Tradeoff (Simplicity or Separation)**: 
+* Single Large Partition (simple,flexible, easy to manage)
+    * failure
+    * corruption
+    * application growth
+* Multiple Partitions (complex, hard but better)
+    * sizing mistakes
+    * mount ordering
+    * update logic
+    * recovery logic
+    * operational maintenance
+
+**Question to ask when designing**:
+* where does *rootfs* live ?
+* is *rootfs* r or r/w ?
+* need 1 rootfs or 2 rootfs slots for an A/B update model?
+* where does logs, configuration, runtime data, caches, and application data go ?
+* what needs to survive **reboot**, **rollback**, or **factory reset** ?
+* what needs to *encrypted separately* ?
+* what needs to be **backed up**, **restored**, or **wiped independently** ?
 
 
